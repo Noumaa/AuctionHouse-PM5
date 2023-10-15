@@ -15,11 +15,16 @@ class CategoryArgument extends StringEnumArgument {
 		return array_map('strtolower', $names);
 	}
 
-	public function getTypeName(): string {
-		return "name";
-	}
+    public function getTypeName(): string {
+        return "name";
+    }
 
 	public function parse(string $argument, CommandSender $sender): ICategory {
 		return Category::get($argument);
 	}
+
+    public function getEnumName(): string
+    {
+        return "category";
+    }
 }

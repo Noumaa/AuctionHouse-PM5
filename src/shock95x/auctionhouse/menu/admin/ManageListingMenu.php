@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace shock95x\auctionhouse\menu\admin;
 
+use pocketmine\block\VanillaBlocks;
 use pocketmine\inventory\Inventory;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
@@ -31,11 +32,11 @@ class ManageListingMenu extends AHMenu {
 	public function renderButtons(): void {
 		parent::renderButtons();
 		$listing = $this->getListings()[0];
-		$duplicateItem = ItemFactory::getInstance()->get(ItemIDs::EMERALD_BLOCK)->setCustomName(TextFormat::RESET . Locale::get($this->player, "duplicate-item"));
+		$duplicateItem = VanillaBlocks::EMERALD()->asItem()->setCustomName(TextFormat::RESET . Locale::get($this->player, "duplicate-item"));
 		$status =  Locale::get($this->player, $listing->isExpired() ? "status-expired" : "status-active");
-		$listingStatus = ItemFactory::getInstance()->get(ItemIDs::GOLD_BLOCK)
+		$listingStatus = VanillaBlocks::GOLD()->asItem()
 			->setCustomName(str_ireplace("{STATUS}", $status, implode("\n", preg_filter('/^/', TextFormat::RESET, Locale::get($this->player, "listing-status")))));
-		$deleteItem = ItemFactory::getInstance()->get(ItemIDs::REDSTONE_BLOCK)->setCustomName(TextFormat::RESET . Locale::get($this->player, "delete-item"));
+		$deleteItem = VanillaBlocks::REDSTONE()->asItem()->setCustomName(TextFormat::RESET . Locale::get($this->player, "delete-item"));
 
 		$this->inventory->setItem(self::INDEX_DUPLICATE, $duplicateItem);
 		$this->inventory->setItem(self::INDEX_STATUS, $listingStatus);
@@ -70,9 +71,5 @@ class ManageListingMenu extends AHMenu {
 				break;
 		}
 		return parent::handle($player, $itemClicked, $inventory, $slot);
-	}
-
-	public function onClose(Player $player): void {
-		parent::onClose($player);
 	}
 }

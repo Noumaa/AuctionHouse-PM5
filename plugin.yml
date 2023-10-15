@@ -1,11 +1,16 @@
 name: AuctionHouse
 main: shock95x\auctionhouse\AuctionHouse
-version: 2.0.2
-api: 4.0.0
-author: Shock95x
+version: 3.0.0
+api: 5.6.0
+authors:
+    - Shock95x
+    - Nouma
 softdepend: [BedrockEconomy]
-virions: ["InvMenu", "libasynql", "await-generator", "UpdateNotifier", "Commando"]
+virions: ["InvMenu", "libasynql", "await-generator", "Commando"]
 permissions:
+    auctionhouse.command:
+        default: true
+        description: Allows player to use the command
     auctionhouse.command.shop:
         default: true
         description: Allows player to open the shop menu

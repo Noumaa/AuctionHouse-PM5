@@ -5,7 +5,7 @@ namespace shock95x\auctionhouse;
 
 use CortexPE\Commando\exception\HookAlreadyRegistered;
 use CortexPE\Commando\PacketHooker;
-use JackMD\UpdateNotifier\UpdateNotifier;
+//use JackMD\UpdateNotifier\UpdateNotifier;
 use muqsit\invmenu\InvMenuHandler;
 use pocketmine\block\tile\TileFactory;
 use pocketmine\data\bedrock\EnchantmentIdMap;
@@ -34,7 +34,7 @@ class AuctionHouse extends PluginBase {
 	private ?EconomyProvider $economyProvider = null;
 
 	public const FAKE_ENCH_ID = -1;
-	private const RESOURCES = ["statements/mysql.sql" => true, "statements/sqlite.sql" => true, "language/en_US.yml" => false, "language/ru_RU.yml" => false, "language/de_DE.yml" => false];
+	private const RESOURCES = ["statements/mysql.sql" => true, "statements/sqlite.sql" => true, "language/en_US.yml" => false, "language/ru_RU.yml" => false, "language/fr_FR.yml" => false, "language/de_DE.yml" => false];
 
 	public function onLoad(): void {
 		self::setInstance($this);
@@ -79,7 +79,7 @@ class AuctionHouse extends PluginBase {
 			}
 			Settings::setCurrencySymbol($this->economyProvider->getCurrencySymbol());
 		}), 1);
-		UpdateNotifier::checkUpdate($this->getDescription()->getName(), $this->getDescription()->getVersion());
+//		UpdateNotifier::checkUpdate($this->getDescription()->getName(), $this->getDescription()->getVersion()); todo removed update
 		$this->getServer()->getCommandMap()->register($this->getDescription()->getName(), new AHCommand($this, "ah", "AuctionHouse command"));
 		$this->getScheduler()->scheduleDelayedTask(new CheckLegacyTask($this), 1);
 	}

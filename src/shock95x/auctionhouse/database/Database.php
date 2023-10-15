@@ -14,6 +14,7 @@ use shock95x\auctionhouse\AHListing;
 use shock95x\auctionhouse\AuctionHouse;
 use shock95x\auctionhouse\database\storage\DataStorage;
 use shock95x\auctionhouse\task\ListingExpireTask;
+use shock95x\auctionhouse\utils\Utils;
 use SOFe\AwaitGenerator\Await;
 
 class Database {
@@ -102,7 +103,7 @@ class Database {
 			$rows["created"],
 			$rows["end_time"],
 			boolval($rows["expired"]),
-			Item::jsonDeserialize(json_decode($rows["item"], true))
+			Utils::decodeItem(json_decode($rows["item"]))
 		);
 	}
 }

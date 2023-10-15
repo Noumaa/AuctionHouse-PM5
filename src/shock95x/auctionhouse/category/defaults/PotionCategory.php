@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace shock95x\auctionhouse\category\defaults;
 
+use pocketmine\data\bedrock\PotionTypeIdMap;
+use pocketmine\data\bedrock\PotionTypeIds;
+use pocketmine\entity\effect\VanillaEffects;
 use pocketmine\item\Item;
 use pocketmine\item\Potion;
 use pocketmine\item\SplashPotion;
@@ -26,6 +29,8 @@ class PotionCategory implements ICategory {
 	}
 
 	public function getMenuItem(): Item {
-		return VanillaItems::WATER_POTION()->setCustomName(TextFormat::RESET . $this->getDisplayName());
+		return VanillaItems::POTION()
+            ->setType(PotionTypeIdMap::getInstance()->fromId(PotionTypeIds::WATER))
+            ->setCustomName(TextFormat::RESET . $this->getDisplayName());
 	}
 }

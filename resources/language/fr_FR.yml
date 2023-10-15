@@ -1,0 +1,231 @@
+---
+# DO NOT EDIT THIS VALUE, INTERNAL USE ONLY. #
+lang-version: 4
+
+# Refer to https://minecraft.gamepedia.com/Formatting_codes for formatting codes, you can replace the '§' symbol with a '&'
+
+# AH Menu titles
+menu-name: "Hôtel des ventes"
+listings-menu-name: "&aVentes en cours"
+expired-menu-name: "&cVentes expirées / annulées"
+purchase-menu-name: "Confirmer l'achat"
+admin-menu-name: "&l&cAdministration"
+category-menu-name: "&6Catégories"
+manage-listing-name: "&6Editer la vente"
+player-listing: "&6Ventes de &b{PLAYER}"
+
+# Chat messages
+item-listed: "&2Vous avez mis en vente &d{ITEM} &r&d(x{AMOUNT}) &2pour &d{PRICE}."
+cancelled-item: "&eVous avez &6annuler &eune enchère. Récupérez les items avec &6/ah expired&e."
+cancelled-purchase: "&cVous avez annulé cet achat."    #{PLAYER}, {ITEM}, {PRICE}, {AMOUNT}
+purchased-item: "&2Vous avez acheté &d{ITEM} &r&d(x{AMOUNT}) &2pour &d{PRICE}§2."    #{PLAYER}, {ITEM}, {PRICE}, {AMOUNT}
+seller-message: "&e{PLAYER} &bvous a acheté {ITEM} (x{AMOUNT}) pour &d{PRICE} !"    #{ITEM}, {AMOUNT}
+returned-item: "&2Vous avez retiré &d{ITEM} &r&d(x{AMOUNT}) &2de l'hôtel des ventes."
+
+# Error messages
+in-creative: "&cVous ne pouvez pas mettre en vente en mod créatif."
+max-listings: "&cVous ne pouvez pas avoir plus de {MAX} ventes en cours."
+invalid-price: "&cPrix invalide."
+not-enough-space: "&cVous n'avez pas la place requise pour récupérer les items !"
+self-purchase: "&cVous ne pouvez pas acheter vos propres items !"
+no-item: "&cVous devez tenir les items à vendre dans vos mains !"
+cannot-afford: "&cVous n'avez pas assez d'argent pour acheter cet item."
+item-blacklisted: "&cThat item is not allowed to be put on the auction house!"
+invalid-balance: "&cYou do not have enough money to list an auction."
+listing-gone: "&cThis listing no longer exists."
+price-range: "&cInvalid price range"    #{MIN}, {MAX}
+in-cooldown: "&cYou are currently in cooldown, please wait &b{M} minute(s) &cand &b{S} second(s)&c."    #{M}, {S}
+player-not-found: "&cThis player has no active listings."
+player-listings-usage: "&cView your listings with /ah listings"
+inventory-full: "&cYour inventory is full, remove some items to claim your listings."
+purchase-economy-error: "&cCould not complete transaction."
+
+# Items in the menu UI
+listed-item:
+    # {PRICE} = Price of listing
+    # {SELLER} = Username of seller
+    # {D} = Days, {H} = Hours, {M} = Minutes
+    - "&7Cliquez pour acheter."
+    - ""
+    - "&9Prix: &e{PRICE}"
+    - "&9Vendeur: &e{SELLER}"
+    - "&9Expire dans: &e{D}j {H}h {M}m"
+your-listed-item:
+    # {PRICE} = Price of listing
+    # {D} = Days, {H} = Hours, {M} = Minutes
+    - "&cCliquez pour supprimer."
+    - ""
+    - "&9Prix: &e{PRICE}"
+    - "&9Expire dans: &e{D}j {H}h {M}m"
+    - "&7-------------------------"
+expired-item:
+    # {PRICE} = Price of listing
+    - "&aCliquez pour récupérer les items."
+    - ""
+    - "&9Prix: &e{PRICE}"
+view-listed-items:
+    # {SELLING} = Number of active listings
+    name: "&6Mes ventes"
+    lore:
+        - "&aCliquez pour accéder à vos"
+        - "&aventes en cours."
+        - ""
+        - "&9Annonces : &e{SELLING}"
+view-expired-items:
+    # {EXPIRED} = Number of expired listings
+    name: "&6Récupérer les items expirés / annulés"
+    lore:
+        - "&aCliquez pour accéder et récupérer"
+        - "&a les items expirés ou annulés."
+        - ""
+        - "&9Items en attente : &e{EXPIRED}"
+
+# Admin Menu
+view-admin-menu:
+    name: "&e&k----- &r&l&c Admin Menu &r&e&k-----"
+    lore:
+        - "&r&aClick here to view the admin menu."
+        #- "&aYou can remove specific items here."
+main-stats-admin:
+    # {PAGE} = Current page
+    # {MAX} = Max page
+    # {EXPIRED} = Expired listing count
+    # {TOTAL} = Total listing count
+    name: "&l&cAdmin Menu"
+    lore:
+        - "&aPage {PAGE}/{MAX}"
+        - "&7Total of &b{TOTAL} &7items"
+        - "&c(&b{EXPIRED} &cexpired items)"
+        - "Click to refresh page"
+listed-item-admin:
+    # {PRICE} = Price of listing
+    # {SELLER} = Username of seller
+    # {STATUS} = Listing status (Active/Expired)
+    - "&7-------------------------"
+    - "&6Click here to manage listing."
+    - ""
+    - "&9Price: &e{PRICE}"
+    - "&9Seller: &e{SELLER}"
+    - "&9Status: {STATUS}"
+    - "&7-------------------------"
+
+status-active: "&aActive"
+status-expired: "&cExpired"
+selected-listing-name: "&l&eManage Listing"
+
+#duplicate-item: "&aClick here to duplicate item to inventory"
+#listing-expired: "&eClick here to make listing &cexpired"
+#listing-active: "&eClick here to make listing &aactive"
+#delete-item: "&cClick here to delete item and listing"
+
+duplicate-item: "&aAdd item to inventory"
+listing-status:
+    - "Status: {STATUS}"
+    - "&6Change listing status"
+delete-item: "&cDelete listing and item"
+
+# Pagination items
+previous-page:
+    name: "&a<- Page précédente"
+    lore:
+        - "&7Aller à la page précédente"
+next-page:
+    name: "&aPage suivante ->"
+    lore:
+        - "&7Aller à la page suivante"
+back-button:
+    name: "&6Back"
+    lore:
+
+sell-description:
+    name: "&6Vendre un item"
+    lore:
+        - "&aPour vendre des items, tenez-le(s) en main"
+        - "&aet faites simplement &b/ah sell <prix>&a."
+main-description:
+    name: "&6Comment ça marche ?"
+    lore:
+        - "&aThis is the auction house, here you can"
+        - "&alist items for sale and purchase items"
+        - "&athat others have listed for sale."
+        - ""
+        - "&aThe auction is also a great way to make"
+        - "&amoney by selling farmable items other"
+        - "&aplayers may be interested in buying."
+main-stats:
+    # {PAGE} = Current page
+    # {MAX} = Max page
+    # {TOTAL} = Total listing count
+    name: "&l&6Hôtel des ventes"
+    lore:
+        - "&aPage {PAGE}/{MAX}"
+        - "&7Total de &b{TOTAL} &7items"
+        - "Cliquez pour actualiser"
+listings-description:
+    name: "&6Et cette page ?"
+    lore:
+        - "&aThese are your current listings, all of"
+        - "&athe items you currently have listed on"
+        - "&athe auction house are displayed here."
+        - ""
+        - "&aYou can cancel and view your listing's"
+        - "&aexpire time here."
+listings-stats:
+    # {PAGE} = Current page
+    # {MAX} = Max page
+    # {TOTAL} = Total listing count
+    name: "&l&6Listings"
+    lore:
+        - "&aPage {PAGE}/{MAX}"
+        - "&7Total of &b{TOTAL} &7items"
+expired-description:
+    name: "&6What is this page?"
+    lore:
+        - "&aThis page houses all of your cancelled and"
+        - "&aexpired items, when a listings is cancelled"
+        - "&aor expires you will be able to return that"
+        - "&aitem back to you from this menu."
+        - ""
+        - "&aJust click on the item and if you have enough"
+        - "&ainventory space you will receive the item."
+expired-stats:
+    # {PAGE} = Current page
+    # {MAX} = Max page
+    # {TOTAL} = Number of categories
+    name: "&l&6Expired"
+    lore:
+        - "&aPage {PAGE}/{MAX}"
+        - "&7Total of &b{TOTAL} &7items"
+        - "&3Click here to return all items"
+
+# Category menu
+category-stats:
+    # {CATEGORY} = Category
+    # {PAGE} = Current page
+    # {MAX} = Max page
+    # {TOTAL} = Total listing count
+    name: "{CATEGORY}"
+    lore:
+        - "&aPage {PAGE}/{MAX}"
+        - "&7Total of &b{TOTAL} &7listings"
+category-list-stats:
+    # {PAGE} = Current page
+    # {MAX} = Max page
+    # {TOTAL} = Total listing count
+    name: "&l&6Category Menu"
+    lore:
+        - "&aPage {PAGE}/{MAX}"
+        - "&7Total of &b{TOTAL} &7categories"
+
+# Confirm purchase menu
+purchase-confirm:
+    name: "&aConfirm Purchase"
+purchase-cancel:
+    name: "&cCancel Purchase"
+purchase-item:
+    lore:
+        - "&7-------------------------"
+        - "&9Price: &e{PRICE}"
+        - "&9Seller: &e{SELLER}"
+        - "&7-------------------------"
+...

@@ -147,7 +147,7 @@ class DataStorage {
 			"uuid" => $uuid,
 			"username" => $name,
 			"price" => $price,
-			"item" => json_encode($item->jsonSerialize()),
+			"item" => json_encode(Utils::encodeItem($item)),
 			"created" => $created,
 			"end_time" => $endTime,
 			"expired" => false],
@@ -171,7 +171,7 @@ class DataStorage {
 				"uuid" => $uuid,
 				"username" => $name,
 				"price" => $price,
-				"item" => json_encode($item->jsonSerialize()),
+				"item" => json_encode(Utils::encodeItem($item)),
 				"created" => $created,
 				"end_time" => $endTime,
 				"expired" => false], $resolve, $reject);

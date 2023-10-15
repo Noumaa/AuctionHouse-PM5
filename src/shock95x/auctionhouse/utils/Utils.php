@@ -3,16 +3,39 @@ declare(strict_types=1);
 
 namespace shock95x\auctionhouse\utils;
 
+use Exception;
+use pocketmine\data\SavedDataLoadingException;
 use pocketmine\inventory\Inventory;
 use pocketmine\item\Item;
 use pocketmine\item\LegacyStringToItemParser;
+use pocketmine\nbt\LittleEndianNbtSerializer;
+use pocketmine\nbt\TreeRoot;
 use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
+use shock95x\auctionhouse\AuctionHouse;
 
 class Utils {
+
+    public static function encodeItem(Item $item): string
+    {
+        $serializer = new LittleEndianNbtSerializer();
+        return base64_encode($serializer->write(new TreeRoot($item->nbtSerialize())));
+    }
+
+    public static function decodeItem(string $data, bool $silent = false): ?Item
+    {
+        $serializer = new LittleEndianNbtSerializer();
+        try {
+            $item = Item::nbtDeserialize($serializer->read(base64_decode($data))->mustGetCompoundTag());
+        } catch (SavedDataLoadingException|Exception $e) {
+            if (!$silent) AuctionHouse::getInstance()->getLogger()->error("Error during decoding of an item from database, incorrect item: " . $e->getMessage());
+            return null;
+        }
+        return $item;
+    }
 
 	public static function getEndTime(): int {
 		return time() + (Settings::getExpireInterval() * 3600);

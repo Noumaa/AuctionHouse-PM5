@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace shock95x\auctionhouse\category\defaults;
 
+use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
 use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemFactory;
@@ -26,6 +27,6 @@ class BlockCategory implements ICategory {
 	}
 
 	public function getMenuItem(): Item {
-		return ItemFactory::getInstance()->get(ItemIds::BRICK_BLOCK)->setCustomName(TextFormat::RESET . $this->getDisplayName());
+		return VanillaBlocks::BRICKS()->asItem()->setCustomName(TextFormat::RESET . $this->getDisplayName());
 	}
 }
